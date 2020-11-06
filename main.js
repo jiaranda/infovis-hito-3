@@ -20,7 +20,7 @@ const changeColSelector = async (col) => {
 
 const main = async () => {
   const listingsData = await loadCSV("data/listings.csv");
-  const neighborhoodsGeoData = await loadJSON("data/neighborhoods.geojson");
+  const neighborhoodsGeoData = await loadJSON("data/comunas.geojson");
   console.log(neighborhoodsGeoData);
   const mapSVG = await createMap(neighborhoodsGeoData, listingsData, "price");
 };

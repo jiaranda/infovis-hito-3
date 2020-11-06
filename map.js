@@ -96,9 +96,10 @@ const createMap = async (geoData, data, dataColumn) => {
     .attr("d", geoPaths)
     .attr("fill", colorPalette.mapFill)
     .attr("opacity", 0.9)
-    .attr("stroke", colorPalette.mapStroke);
+    .attr("stroke", colorPalette.mapStroke)
+    .attr("stroke-width", 0.05);
 
-  addMapMarkers(mapGroup, geoData, data, dataColumn);
+  // addMapMarkers(mapGroup, geoData, data, dataColumn);
 
   let zoom = d3
     .zoom()
@@ -110,7 +111,7 @@ const createMap = async (geoData, data, dataColumn) => {
       [0, 0],
       [width, height],
     ])
-    .scaleExtent([1, 7])
+    .scaleExtent([1, 100])
     .on("zoom", (event) => {
       mapGroup.attr("transform", event.transform);
     });
