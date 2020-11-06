@@ -19,10 +19,13 @@ const changeColSelector = async (col) => {
 };
 
 const main = async () => {
-  const listingsData = await loadCSV("data/listings.csv");
-  const neighborhoodsGeoData = await loadJSON("data/comunas.geojson");
-  console.log(neighborhoodsGeoData);
-  const mapSVG = await createMap(neighborhoodsGeoData, listingsData, "price");
+  navigator.geolocation.getCurrentPosition((pos) => console.log(pos));
+  const censoData = await loadCSV("data/censo.csv");
+  const citiesData = await loadJSON("data/comunas.geojson");
+
+  await addDataToGeoJSON(censoData, citiesData);
+
+  const mapSVG = await createMap(citiesData, censoData, "price");
 };
 
 main();

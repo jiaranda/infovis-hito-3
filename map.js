@@ -97,7 +97,10 @@ const createMap = async (geoData, data, dataColumn) => {
     .attr("fill", colorPalette.mapFill)
     .attr("opacity", 0.9)
     .attr("stroke", colorPalette.mapStroke)
-    .attr("stroke-width", 0.05);
+    .attr("stroke-width", 0.05)
+    .attr("name", (d) => {
+      return d.properties.comuna;
+    });
 
   // addMapMarkers(mapGroup, geoData, data, dataColumn);
 

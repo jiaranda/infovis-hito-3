@@ -1,12 +1,8 @@
 const loadCSV = async (path) => {
   const rawData = await d3.csv(path);
-  const data = [];
+  const data = {};
   rawData.forEach((item) => {
-    const existingObject = data.find((elem) => {
-      return elem.id == item.id;
-    });
-    if (existingObject) return;
-    data.push(item);
+    data[item.ID] = item;
   });
   return data;
 };
@@ -14,4 +10,11 @@ const loadCSV = async (path) => {
 const loadJSON = async (path) => {
   const data = await d3.json(path);
   return data;
+};
+
+const addDataToGeoJSON = async (data, geoData) => {
+  geoData.features.forEach((item) => {
+    item.properties.metadata = data[item.id];
+  });
+  return geoData;
 };
