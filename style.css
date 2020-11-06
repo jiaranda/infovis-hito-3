@@ -1,0 +1,21 @@
+:root {
+  --main-background-color: #6b30ca;
+  --main-background-base: rgb(55, 0, 148);
+  --main-background-gradient: linear-gradient(
+    90deg,
+    rgba(55, 0, 148, 1) 0%,
+    rgba(107, 48, 202, 1) 36%,
+    rgba(246, 160, 255, 1) 89%
+  );
+}
+
+html,
+body {
+  /* font-size: 13px; */
+  font-family: "Muli", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #2f1c6a;
+  background-color: #f5f5f5;
+  margin: 0px;
+}
