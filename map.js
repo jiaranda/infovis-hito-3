@@ -4,8 +4,8 @@ const height = bbox.height;
 const colorPalette = {
   mapFill: "#1D3557",
   mapStroke: "#457B9D",
-  dataMin: "#F1FAEE",
-  dataMax: "#E63946",
+  dataMin: "#3392ff",
+  dataMax: "#e02828",
   categoricalDataPalette: d3.schemePastel1,
 };
 
@@ -24,17 +24,17 @@ const getColorMap = (data, dataColumn, categorical = false) => {
   let colors;
   if (!categorical) {
     const max = d3.max(data, function (d) {
-      return d[dataColumn];
+      return d.properties.metadata[dataColumn];
     });
     const min = d3.min(data, function (d) {
-      return d[dataColumn];
+      return d.properties.metadata[dataColumn];
     });
     colors = d3
       .scaleLinear()
       .domain([min, max])
       .range([colorPalette.dataMin, colorPalette.dataMax]);
   } else {
-    const domainData = data.map((item) => item[dataColumn]);
+    const domainData = data.map((item) => item.properties.metadata[dataColumn]);
     colors = d3
       .scaleOrdinal()
       .domain(domainData)
@@ -63,7 +63,8 @@ const addMapMarkers = (svg, geoData, data, dataColumn) => {
     .attr("fill", (d) => colors(d[dataColumn]));
 };
 
-const createMap = async (geoData, data, dataColumn) => {
+const createMap = async (geoData, dataColumn) => {
+  const colors = getColorMap(geoData.features, dataColumn);
   const geoPaths = getGeoPaths(geoData);
   const mapContainer = d3
     .select("#map-container")
@@ -94,15 +95,13 @@ const createMap = async (geoData, data, dataColumn) => {
     .enter()
     .append("path")
     .attr("d", geoPaths)
-    .attr("fill", colorPalette.mapFill)
+    .attr("fill", (d) => colors(d.properties.metadata[dataColumn]))
     .attr("opacity", 0.9)
     .attr("stroke", colorPalette.mapStroke)
     .attr("stroke-width", 0.05)
     .attr("name", (d) => {
       return d.properties.comuna;
     });
-
-  // addMapMarkers(mapGroup, geoData, data, dataColumn);
 
   let zoom = d3
     .zoom()
