@@ -4,8 +4,8 @@ const height = bbox.height;
 const colorPalette = {
   mapFill: "#1D3557",
   mapStroke: "#457B9D",
-  dataMin: "#3392ff",
-  dataMax: "#e02828",
+  dataMax: "#FFFFFF",
+  dataMin: "#d92df7",
   categoricalDataPalette: d3.schemePastel1,
 };
 

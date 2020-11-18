@@ -24,7 +24,7 @@ const main = async () => {
 
   await addDataToGeoJSON(censoData, citiesData);
 
-  const mapSVG = await createMap(citiesData, "DENSIDAD");
+  const mapSVG = await createMap(citiesData, "TOTAL_PERS");
 };
 
 main();
