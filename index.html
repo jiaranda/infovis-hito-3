@@ -16,7 +16,41 @@
     <title>Hito 3 Javier Aranda</title>
   </head>
   <body>
-    <div id="main-container"></div>
+    <div id="main-container">
+      <h1>Informe</h1>
+      <p>
+        En el mapa se puede visualizar el atributo "TOTAL_PERS", con la
+        finalidad de centrar la atención del usuario rápidamente en las comunas
+        con mayor cantidad de personas. El colormap varía entre blanco y morado,
+        siendo este último el color que representa mayor intensidad. Elegí un
+        colormap secuencial para representar la cantidad de personas porque un
+        colormap divergente podría confundir al usuario, dando a entender que el
+        dato de la cantidad de personas es un tipo de atributo divergente. La
+        proyección utilizada en el mapa es Mercator, elegí esto a pesar de que
+        modifica los tamaños, debido a que mantiene bien las formas de los
+        mapas, además, al ser un área relativamente pequeña (solo un país), no
+        habrá mucha distoricón de los tamaños.
+      </p>
+      <p>
+        Por el lado del zoom y pan, se mantiene el comportamiento estándar de
+        d3, para que sea más intuitivo para el usuario.
+      </p>
+      <p>
+        No tuve el tiempo de realizar la vista coordinada, pero me hubiera
+        gustado mostrar las proporciones de los diferentes indicadores
+        disponibles en el dataset. Por ejemplo, la cantidad de hombres y mujeres
+        la hubiera mostrado en una barra con dos colores, donde el porcentaje de
+        un color corresponda a hombres y un porcentaje de otro color corresponda
+        a mujeres. La marca de este ejemplo sería la longitud, no el área. Esto
+        porque para una persona es más fácil comparar longitudes que áreas.
+      </p>
+      <p>
+        Para la interacción del usuario con las comunas, hubiera hecho un hover
+        para cada comuna, cambiando el color cuando el mouse entre y salga del
+        elemento. Al seleccionarlo, lo hubiera hecho un poco más transparente,
+        aplicando el filtro a la vista coordinada.
+      </p>
+    </div>
     <div id="map-container"></div>
     <script src="data.js"></script>
     <script src="map.js"></script>
